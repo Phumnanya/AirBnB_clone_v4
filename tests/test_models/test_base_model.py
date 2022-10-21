@@ -2,7 +2,7 @@
 """Test BaseModel for expected behavior and documentation"""
 from datetime import datetime
 import inspect
-import base_model
+import models
 import pep8 as pycodestyle
 import time
 import unittest
