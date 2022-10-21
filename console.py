@@ -18,7 +18,7 @@ classes = {"Amenity": Amenity, "BaseModel": BaseModel, "City": City,
 
 
 class HBNBCommand(cmd.Cmd):
-    """ HBNH console """
+    """ HBNB console """
     prompt = '(hbnb) '
 
     def do_EOF(self, arg):
