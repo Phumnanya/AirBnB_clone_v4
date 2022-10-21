@@ -3,6 +3,7 @@
 from datetime import datetime
 import inspect
 import models
+from models import base_model
 from models.base_model import BaseModel
 import pep8 as pycodestyle
 import time
@@ -26,10 +27,9 @@ class TestBaseModelDocs(unittest.TestCase):
                 errors = pycodestyle.Checker(path).check_all()
                 self.assertEqual(errors, 0)
 
-    # @unittest.skip('giving me headache')
     def test_module_docstring(self):
         """Test for the existence of module docstring"""
-        module_doc = BaseModel.__doc__
+        module_doc = base_model.__doc__
         self.assertIsNot(module_doc, None,
                          "base_model.py needs a docstring")
         self.assertTrue(len(module_doc) > 1,
