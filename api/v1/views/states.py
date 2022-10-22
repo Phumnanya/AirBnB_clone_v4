@@ -17,7 +17,7 @@ def states_route():
                       storage.all(State).values()))
         return make_response(jsonify(states), 200)
     elif request.method == 'POST':
-        form_data = request.get_json(silent=True)
+        form_data = request.get_json()
         if form_data is None:
             return make_response(jsonify({'error': 'Not a JSON'}), 400)
         if 'name' not in form_data:
@@ -42,10 +42,9 @@ def state_route(state_id):
         return make_response(jsonify(state.to_dict()), 200)
     elif request.method == 'DELETE':
         state.delete()
-        storage.save()
         return make_response(jsonify({}), 200)
     elif request.method == 'PUT':
-        form_data = request.get_json(silent=True)
+        form_data = request.get_json()
         if form_data is None:
             return make_response(jsonify({'error': 'Not a JSON'}), 400)
         for key, val in form_data.items():
