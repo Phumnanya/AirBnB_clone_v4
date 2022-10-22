@@ -59,7 +59,6 @@ class TestPlaceDocs(unittest.TestCase):
 
 class TestPlace(unittest.TestCase):
     """Test the Place class"""
-
     def test_is_subclass(self):
         """Test that Place is a subclass of BaseModel"""
         place = Place()

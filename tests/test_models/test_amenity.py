@@ -59,7 +59,6 @@ class TestAmenityDocs(unittest.TestCase):
 
 class TestAmenity(unittest.TestCase):
     """Test the Amenity class"""
-
     def test_is_subclass(self):
         """Test that Amenity is a subclass of BaseModel"""
         amenity = Amenity()
