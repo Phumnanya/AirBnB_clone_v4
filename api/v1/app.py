@@ -10,12 +10,14 @@ app = Flask(__name__)
 
 @app.teardown_appcontext
 def reload_db(exception):
+    """reloads db"""
     storage.close()
 
 
 @app.errorhandler(404)
 def error_404_handler(exception):
-    return jsonify({'error': 'Not found'})
+    """404 error handler"""
+    return jsonify({'error': 'Not found'}), 404
 
 
 app.register_blueprint(app_views, url_prefix='/api/v1')
