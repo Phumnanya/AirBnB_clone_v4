@@ -2,7 +2,7 @@
 """This module runs a flask server"""
 import os
 from flask import Flask, jsonify
-from .views import app_views
+from api.v1.views import app_views
 from models import storage
 
 app = Flask(__name__)
@@ -26,4 +26,4 @@ if __name__ == '__main__':
     PORT = os.getenv('HBNB_API_PORT')
     app.run(host=HOST if HOST is not None else '0.0.0.0',
             port=int(PORT) if PORT is not None else 5000,
-            threaded=True)
+            threaded=True, debug=True)
