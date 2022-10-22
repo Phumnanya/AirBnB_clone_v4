@@ -1,24 +1,25 @@
 #!/usr/bin/python3
 """This module runs a flask server"""
 import os
-from flask import Flask, jsonify
+from flask import Flask, jsonify, make_response
 from api.v1.views import app_views
 from models import storage
 
 app = Flask(__name__)
 
-app.url_map.strict_slashes =  False
+app.url_map.strict_slashes = False
+
 
 @app.teardown_appcontext
-def reload_db(exception):
-    """reloads db"""
+def teardown_db(exception):
+    """teardown db"""
     storage.close()
 
 
 @app.errorhandler(404)
 def error_404_handler(exception):
     """404 error handler"""
-    return jsonify({'error': 'Not found'}), 404
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
 
 app.register_blueprint(app_views, url_prefix='/api/v1')
