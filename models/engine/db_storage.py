@@ -76,19 +76,20 @@ class DBStorage:
         self.__session.remove()
 
     def get(self, cls, id):
-        """TODO: Docstring for get.
-
-        :arg1: TODO
-        :returns: TODO
+        """
+        get retrives a single object
+        :cls: is the class of the object
+        :id: is the id of the object
+        :returns: is the object if found else None
 
         """
         return self.__session.query(cls).where(cls.id == id).one_or_none()
 
     def count(self, cls=None):
-        """TODO: Docstring for count.
-
-        :arg1: TODO
-        :returns: TODO
+        """
+        count return the number of objects
+        :cls: if present retruns the number of object of type cls
+        :returns: is the number of obects
 
         """
         if cls is None:

@@ -70,23 +70,22 @@ class FileStorage:
         self.reload()
 
     def get(self, cls, id):
-        """TODO: Docstring for get.
-
-        :arg1: TODO
-        :returns: TODO
-
+        """
+        get retrives a single object
+        :cls: is the class of the object
+        :id: is the id of the object
+        :returns: is the object if found else None
         """
         key = '{}.{}'.format(cls.__name__, id)
         return self.__objects.get(key, None)
 
     def count(self, cls=None):
-        """TODO: Docstring for count.
-
-        :arg1: TODO
-        :returns: TODO
+        """
+        count return the number of objects
+        :cls: if present retruns the number of object of type cls
+        :returns: is the number of obects
 
         """
-        a = ''
         if cls is None:
             return len(self.__objects.keys())
         return len(
