@@ -51,5 +51,5 @@ def state_route(state_id):
         for key, val in form_data.items():
             if key not in ['id', 'created_at', 'updated_at']:
                 setattr(state, key, val)
-        storage.save()
+        state.save()
         return make_response(jsonify(state.to_dict()), 200)
