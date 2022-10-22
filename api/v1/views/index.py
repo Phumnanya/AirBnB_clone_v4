@@ -19,8 +19,8 @@ def get_status():
     return jsonify({'status': 'OK'})
 
 
-@app_views.route('/stat')
-def get_stat():
+@app_views.route('/stats')
+def get_stats():
     """
     get_stat returns stat of all objects
     """
