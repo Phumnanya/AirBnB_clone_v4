@@ -15,7 +15,10 @@ def reload_db(exception):
 
 @app.errorhandler(404)
 def error_404_handler(exception):
-    return jsonify({'error': 'Not found'})
+    return jsonify(
+            {
+                "error": "Not found"
+            })
 
 
 app.register_blueprint(app_views, url_prefix='/api/v1')
