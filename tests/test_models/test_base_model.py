@@ -9,6 +9,7 @@ import time
 import unittest
 from unittest import mock
 
+
 class TestBaseModelDocs(unittest.TestCase):
     """Tests to check the documentation and style of BaseModel class"""
 
