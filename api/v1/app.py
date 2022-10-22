@@ -2,7 +2,7 @@
 """This module runs a flask server"""
 import os
 from flask import Flask, jsonify
-from .views import app_views
+from api.v1.views import app_views
 from models import storage
 
 app = Flask(__name__)

@@ -1,7 +1,6 @@
 #!/usr/bin/python3
-"""This module handles states routes"""
+"""This module handles user routes"""
 from flask import Response, abort, json, jsonify, request
-from werkzeug.wrappers import response
 from api.v1.views import app_views
 
 from models.user import User
