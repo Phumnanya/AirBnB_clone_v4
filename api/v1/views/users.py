@@ -10,7 +10,7 @@ from models import storage
 @app_views.route('/users', methods=['GET', 'POST'])
 def users_route():
     """
-    users_route 
+    users_route
     """
     if request.method == 'GET':
         states = list(map(lambda obj: obj.to_dict(),
@@ -30,9 +30,9 @@ def users_route():
 @app_views.route('/users/<user_id>', methods=['GET', 'DELETE', 'PUT'])
 def user_route(user_id):
     """
-    user_route 
+    user_route
 
-    :param state_id: is the id of the user 
+    :param state_id: is the id of the user
     """
     user = storage.get(User, user_id)
 
@@ -53,4 +53,3 @@ def user_route(user_id):
                 setattr(user, key, val)
         storage.save()
         return jsonify(user.to_dict()), 200
-

@@ -54,4 +54,3 @@ def state_route(state_id):
                 setattr(state, key, val)
         storage.save()
         return jsonify(state.to_dict()), 200
-
