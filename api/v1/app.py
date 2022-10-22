@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""This module runs a flask server"""
 import os
 from flask import Flask, jsonify
 from .views import app_views

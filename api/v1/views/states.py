@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+"""This module handles states routes"""
 from flask import Response, abort, json, jsonify, request
 from werkzeug.wrappers import response
 from api.v1.views import app_views
