@@ -2,12 +2,16 @@
 """This module runs a flask server"""
 import os
 from flask import Flask, jsonify, make_response
+from flask_cors import CORS
 from api.v1.views import app_views
 from models import storage
 
 app = Flask(__name__)
+CORS(app, resources={'*': {'origins': '0.0.0.0'}})
 
 app.url_map.strict_slashes = False
+
+app.register_blueprint(app_views)
 
 
 @app.teardown_appcontext
@@ -20,9 +24,6 @@ def teardown_db(exception):
 def error_404_handler(exception):
     """404 error handler"""
     return make_response(jsonify({'error': 'Not found'}), 404)
-
-
-app.register_blueprint(app_views, url_prefix='/api/v1')
 
 
 if __name__ == '__main__':
