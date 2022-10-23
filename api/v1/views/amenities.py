@@ -10,7 +10,8 @@ from models import storage
 @app_views.route('/amenities', methods=['GET', 'POST'])
 def amenities_route():
     """
-    amenities_route
+    amenities_route handles GET , POST request to the amenities
+    route
     """
     if request.method == 'GET':
         amenity = list(map(lambda obj: obj.to_dict(),
@@ -30,8 +31,7 @@ def amenities_route():
 @app_views.route('/amenities/<amenity_id>', methods=['GET', 'DELETE', 'PUT'])
 def amenity_route(amenity_id):
     """
-    amenity_route
-
+    amenity_route handle GET, DELET, PUT request to specific amenity
     :param amenity_id: is the id of the amenity
     """
     amenity = storage.get(Amenity, amenity_id)

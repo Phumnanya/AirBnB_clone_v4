@@ -83,7 +83,7 @@ class BaseModel:
         models.storage.delete(self)
 
     def update(self, *args, **kwargs):
-        """updates the current instance"""
+        """updates the current instance in the storage"""
         for k, v in kwargs.items():
             if k not in [
                 'id',

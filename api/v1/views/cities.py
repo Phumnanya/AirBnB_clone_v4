@@ -11,7 +11,7 @@ from models import storage
 @app_views.route('/states/<state_id>/cities', methods=['GET', 'POST'])
 def cities_route(state_id):
     """
-    cities_route
+    cities_route handles get, post request to cities
     """
     state = storage.get(State, state_id)
 
@@ -34,7 +34,7 @@ def cities_route(state_id):
 @app_views.route('/cities/<city_id>', methods=['GET', 'DELETE', 'PUT'])
 def city_route(city_id):
     """
-    city route
+    city route handles get, put and delete to a specific city
     """
 
     city = storage.get(City, city_id)

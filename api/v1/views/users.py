@@ -9,7 +9,7 @@ from models import storage
 @app_views.route('/users', methods=['GET', 'POST'])
 def users_route():
     """
-    users route
+    users route handles get, post request to users
     """
     if request.method == 'GET':
         user = list(map(lambda obj: obj.to_dict(),
@@ -32,7 +32,8 @@ def users_route():
 @app_views.route('/users/<user_id>', methods=['GET', 'DELETE', 'PUT'])
 def user_route(user_id):
     """
-    user_route
+    user_route handles get, put, delete requests to a specific
+    user
 
     :param user_id: is the id of the user
     """

@@ -12,7 +12,8 @@ from models import storage
 @app_views.route('/cities/<city_id>/places', methods=['GET', 'POST'])
 def places_route(city_id):
     """
-    places_route
+
+    places_route handles get, post request to places
     """
     city = storage.get(City, city_id)
     if city is None:
@@ -41,7 +42,8 @@ def places_route(city_id):
 @app_views.route('/places/<place_id>', methods=['GET', 'DELETE', 'PUT'])
 def place_route(place_id):
     """
-    place_route
+    place_route handles get, put and delete request to a specific
+    place
 
     :param  place_id: is the id of the place
     """

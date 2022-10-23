@@ -11,7 +11,7 @@ from models import storage
 @app_views.route('/places/<place_id>/reviews', methods=['GET', 'POST'])
 def reviews_route(place_id):
     """
-    reviews_route
+    reviews_route handles get, post request to reviews
     """
     place = storage.get(Place, place_id)
     if place is None:
@@ -40,7 +40,8 @@ def reviews_route(place_id):
 @app_views.route('/reviews/<review_id>', methods=['GET', 'DELETE', 'PUT'])
 def review_route(review_id):
     """
-    review_route
+    review_route handles get, put, delete requests to a specific
+    review
 
     :param  review_id: is the id of the review
     """

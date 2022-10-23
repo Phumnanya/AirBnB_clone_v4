@@ -10,7 +10,7 @@ from models import storage
 @app_views.route('/states', methods=['GET', 'POST'])
 def states_route():
     """
-    states_route
+    states_route handles get, post request to states
     """
     if request.method == 'GET':
         states = list(map(lambda obj: obj.to_dict(),
@@ -30,7 +30,8 @@ def states_route():
 @app_views.route('/states/<state_id>', methods=['GET', 'DELETE', 'PUT'])
 def state_route(state_id):
     """
-    state_route
+    state_route handles get, put, delete request to a specific
+    state
 
     :param state_id: is the id of the state
     """
