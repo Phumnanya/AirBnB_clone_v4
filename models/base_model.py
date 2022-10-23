@@ -82,8 +82,10 @@ class BaseModel:
         """delete the current instance from the storage"""
         models.storage.delete(self)
 
+
+"""
     def update(self, *args, **kwargs):
-        """updates the current instance in the storage"""
+        ""updates the current instance in the storage""
         for k, v in kwargs.items():
             if k not in [
                 'id',
@@ -96,3 +98,4 @@ class BaseModel:
                     'user_id']:
                 setattr(self, k, v)
             self.save()
+"""
