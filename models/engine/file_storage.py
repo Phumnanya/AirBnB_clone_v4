@@ -34,6 +34,23 @@ class FileStorage:
             return new_dict
         return self.__objects
 
+    def get(self, cls, id):
+        """retrieves an object of a class with id"""
+        if cls is not None:
+            res = list(
+                filter(
+                    lambda x: type(x) is cls and x.id == id,
+                    self.__objects.values()
+                )
+            )
+            if res:
+                return res[0]
+        return None
+
+    def count(self, cls=None):
+        """retrieves the number of objects of a class or all (if cls==None)"""
+        return len(self.all(cls))
+
     def new(self, obj):
         """sets in __objects the obj with key <obj class name>.id"""
         if obj is not None:
@@ -44,25 +61,9 @@ class FileStorage:
         """serializes __objects to the JSON file (path: __file_path)"""
         json_objects = {}
         for key in self.__objects:
-            json_objects[key] = self.__objects[key].to_dict(
-                hide_password=False)
+            json_objects[key] = self.__objects[key].to_dict()
         with open(self.__file_path, 'w') as f:
             json.dump(json_objects, f)
-
-    def get(self, cls, id):
-        """
-        Returns the object based on the class name and its ID, or
-        None if not found
-        """
-        if cls not in classes.values():
-            return None
-
-        all_cls = models.storage.all(cls)
-        for value in all_cls.values():
-            if (value.id == id):
-                return value
-
-        return None
 
     def reload(self):
         """deserializes the JSON file to __objects"""
@@ -71,7 +72,7 @@ class FileStorage:
                 jo = json.load(f)
             for key in jo:
                 self.__objects[key] = classes[jo[key]["__class__"]](**jo[key])
-        except BaseException:
+        except Exception:
             pass
 
     def delete(self, obj=None):
@@ -84,28 +85,3 @@ class FileStorage:
     def close(self):
         """call reload() method for deserializing the JSON file to objects"""
         self.reload()
-
-    def get(self, cls, id):
-        """
-        get retrives a single object
-        :cls: is the class of the object
-        :id: is the id of the object
-        :returns: is the object if found else None
-        """
-        key = '{}.{}'.format(cls.__name__, id)
-        return self.__objects.get(key, None)
-
-    def count(self, cls=None):
-        """
-        count return the number of objects
-        :cls: if present retruns the number of object of type cls
-        :returns: is the number of obects
-
-        """
-        if cls is None:
-            return len(self.__objects.keys())
-        return len(
-            list(
-                filter(
-                    lambda value: value.__class__ == cls,
-                    FileStorage.__objects.values())))
