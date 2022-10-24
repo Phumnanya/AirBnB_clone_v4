@@ -24,7 +24,7 @@ def users_route():
             if info not in form_data:
                 return make_response(
                     jsonify({'error': 'Missing {}'.format(info)}), 400)
-        new_user = User(**form_data)
+        new_user = User(hash_password=True, **form_data)
         new_user.save()
         return make_response(jsonify(new_user.to_dict()), 201)
 

@@ -61,3 +61,22 @@ def place_route(place_id):
             return make_response(jsonify({'error': 'Not a JSON'}), 400)
         place.update(**form_data)
         return make_response(jsonify(place.to_dict()), 200)
+
+
+@app_views.route('/places_search', methods=['POST'])
+def place_search():
+    """
+    place_search retrieves all Place objects depending on the JSON in the body
+    of the request
+    """
+    req_json = request.get_json(silent=True)
+    if req_json is None:
+        return make_response(jsonify({'error': 'Not a JSON'}), 400)
+    states_id = req_json.get('states', [])
+    cities_id = req_json.get('cities', [])
+    amenities_id = req_json.get('amenities', [])
+    if len(states_id) == 0 and len(cities_id) == 0 and len(amenities_id) == 0:
+        places = list(map(lambda place: place.to_dict(),
+                      storage.all(Place).values()))
+        return make_response(jsonify(places), 200)
+    # TODO: task 15

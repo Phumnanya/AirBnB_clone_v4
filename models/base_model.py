@@ -4,6 +4,7 @@ Contains class BaseModel
 """
 
 from datetime import datetime
+import hashlib
 import models
 from os import getenv
 import sqlalchemy
@@ -66,7 +67,7 @@ class BaseModel:
         models.storage.new(self)
         models.storage.save()
 
-    def to_dict(self):
+    def to_dict(self, hide_password=True):
         """returns a dictionary containing all keys/values of the instance"""
         new_dict = self.__dict__.copy()
         if "created_at" in new_dict:
@@ -76,6 +77,9 @@ class BaseModel:
         new_dict["__class__"] = self.__class__.__name__
         if "_sa_instance_state" in new_dict:
             del new_dict["_sa_instance_state"]
+        if hide_password:
+            if 'password' in new_dict:
+                del new_dict['password']
         return new_dict
 
     def delete(self):
@@ -84,6 +88,9 @@ class BaseModel:
 
     def update(self, *args, **kwargs):
         """updates the current instance in the storage"""
+        if 'password' in kwargs:
+            kwargs['password'] = hashlib.md5(
+                kwargs['password'].encode('utf-8')).hexdigest()
         for k, v in kwargs.items():
             if k not in [
                 'id',
