@@ -156,7 +156,7 @@ No known bugs at this time.
 ## Authors
 Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
 Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)  
-Bryan Ike-Adinnu - [Github](https://github.com/bryansomto) / [Twitter](https://twitter.com/bryansomto)
+Bryan Ike-Adinnu - [Github](https://github.com/bryansomto) / [Twitter](https://twitter.com/bryansomto)  
 Michael Adewole - [Github](https://github.com/michaseyi) / [Twitter](https://twitter.com/michaseyi)
 
 ## License
