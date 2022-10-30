@@ -49,6 +49,10 @@
 	display: inline-block;
 }
 
+.amenities input {
+	margin-left: 10px;
+}
+
 ul {
 	list-style-type: none;
 	padding: 0px;

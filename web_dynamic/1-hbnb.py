@@ -17,7 +17,7 @@ def hbnb():
     States = storage.all(State).values()
     Amenities = storage.all(Amenity).values()
     Places = storage.all(Place).values()
-    return render_template("0-hbnb.html",
+    return render_template("1-hbnb.html",
                            States=States,
                            Amenities=Amenities,
                            Places=Places,
