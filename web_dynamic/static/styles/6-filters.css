@@ -22,7 +22,7 @@
 	vertical-align: middle;
 	height: 100%;
 	float: left;
-    width: 25%;
+   	width: 25%;
 	line-height: 20px;
 }
 
@@ -51,6 +51,12 @@
 
 .amenities input {
 	margin-left: 10px;
+}
+
+#amenities_list {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 ul {
